@@ -14,6 +14,8 @@ class Custom_Menu_Walker extends Walker_Nav_Menu
 
     function start_el(&$output, $item, $depth = 0, $args = null, $current_object_id = 0)
     {
+        // $indent = str_repeat("\t", $depth);
+        // $output .= $indent . "<li>"; // Custom HTML for menu item start
         $output .= "<li>"; // Custom HTML for menu item start
         $output .= '<a  href="' . $item->url . '" class="nav-item nav-link">' . $item->title  . '</a>'; // Link and title
     }
