@@ -58,6 +58,7 @@
                 <div class="navbar-nav ms-auto py-0">
                     <?php wp_nav_menu(array(
                         'theme_location' => 'primary-menu',
+                        'walker' => new Custom_Menu_Walker(),
                     ));  ?>
                     <!-- <ul>
                         <li><a href="index.html" class="nav-item nav-link">Home</a></li>

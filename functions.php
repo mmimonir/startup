@@ -1,5 +1,29 @@
 <?php
 
+class Custom_Menu_Walker extends Walker_Nav_Menu
+{
+    function start_lvl(&$output, $depth = 0, $args = null)
+    {
+        $output .= "<ul>"; // Custom HTML for sub-menu start
+    }
+
+    function end_lvl(&$output, $depth = 0, $args = null)
+    {
+        $output .= "</ul>"; // Custom HTML for sub-menu end
+    }
+
+    function start_el(&$output, $item, $depth = 0, $args = null, $current_object_id = 0)
+    {
+        $output .= "<li>"; // Custom HTML for menu item start
+        $output .= '<a  href="' . $item->url . '" class="nav-item nav-link">' . $item->title  . '</a>'; // Link and title
+    }
+
+    function end_el(&$output, $item, $depth = 0, $args = null)
+    {
+        $output .= "</li>"; // Custom HTML for menu item end
+    }
+}
+
 function startup_setup()
 {
     load_theme_textdomain('startup', get_template_directory() . '/languages');
