@@ -60,7 +60,7 @@ add_action('wp_enqueue_scripts', 'startup_assets');
 
 // Main Sliders
 function startup_cpt()
-{
+{   // Slider Custom Post Type
     $labels = array(
         'name'                  => _x('Sliders', 'Post type general name', 'startup'),
         'singular_name'         => _x('Slider', 'Post type singular name', 'startup'),
@@ -98,5 +98,49 @@ function startup_cpt()
         // 'taxonomies'         => array('category', 'post_tag'),
     );
     register_post_type('slider', $args);
+
+    // Services Custom Post Type    
+    $labels = array(
+        'name'                  => _x('Services', 'Post type general name', 'startup'),
+        'singular_name'         => _x('Service', 'Post type singular name', 'startup'),
+        'menu_name'             => _x('Services', 'Admin Menu text', 'startup'),
+        'name_admin_bar'        => _x('Service', 'Add New on Toolbar', 'startup'),
+        'add_new'               => __('Add New', 'slider'),
+        'add_new_item'          => __('Add New Service', 'startup'),
+        'new_item'              => __('New Service', 'startup'),
+        'edit_item'             => __('Edit Service', 'startup'),
+        'view_item'             => __('View Service', 'startup'),
+        'all_items'             => __('All Services', 'startup'),
+        'search_items'          => __('Search Services', 'startup'),
+        'parent_item_colon'     => __('Parent Services:', 'startup'),
+        'not_found'             => __('No services found.', 'startup'),
+        'not_found_in_trash'    => __('No services found in Trash.', 'startup'),
+    );
+    $args = array(
+        'public' => true,
+        'labels' => $labels,
+        'menu_icon' => 'dashicons-book',
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array('slug' => 'services'),
+        'capability_type'    => 'post',
+        'has_archive'        => false,
+        'hierarchical'       => false,
+        'menu_position'      => 20,
+        'supports'           => array('title', 'editor', 'custom-fields', 'thumbnail'),
+    );
+    register_post_type('services', $args);
 }
 add_action('init', 'startup_cpt');
+
+function startup_acf_json($path)
+{
+    // update path
+    $path = get_stylesheet_directory() . '/acf-json';
+
+    // return
+    return $path;
+}
+add_filter('acf/settings/save_json', 'startup_acf_json');
