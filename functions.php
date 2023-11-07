@@ -132,6 +132,40 @@ function startup_cpt()
         'supports'           => array('title', 'editor', 'custom-fields', 'thumbnail'),
     );
     register_post_type('services', $args);
+
+    // Price Custom Post
+    $labels = array(
+        'name'                  => _x('Prices', 'Post type general name', 'startup'),
+        'singular_name'         => _x('Price', 'Post type singular name', 'startup'),
+        'menu_name'             => _x('Prices', 'Admin Menu text', 'startup'),
+        'name_admin_bar'        => _x('Price', 'Add New on Toolbar', 'startup'),
+        'add_new'               => __('Add New', 'slider'),
+        'add_new_item'          => __('Add New Price', 'startup'),
+        'new_item'              => __('New Price', 'startup'),
+        'edit_item'             => __('Edit Price', 'startup'),
+        'view_item'             => __('View Price', 'startup'),
+        'all_items'             => __('All Prices', 'startup'),
+        'search_items'          => __('Search Prices', 'startup'),
+        'parent_item_colon'     => __('Parent Prices:', 'startup'),
+        'not_found'             => __('No prices found.', 'startup'),
+        'not_found_in_trash'    => __('No prices found in Trash.', 'startup'),
+    );
+    $args = array(
+        'public' => true,
+        'labels' => $labels,
+        'menu_icon' => 'dashicons-book',
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array('slug' => 'price'),
+        'capability_type'    => 'post',
+        'has_archive'        => false,
+        'hierarchical'       => false,
+        'menu_position'      => 20,
+        'supports'           => array('title', 'custom-fields', 'thumbnail'),
+    );
+    register_post_type('price', $args);
 }
 add_action('init', 'startup_cpt');
 
