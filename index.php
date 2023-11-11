@@ -383,54 +383,37 @@
             <h1 class="mb-0">What Our Clients Say About Our Digital Services</h1>
         </div>
         <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.6s">
-            <div class="testimonial-item bg-light my-4">
-                <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                    <img class="img-fluid rounded" src="<?php echo get_template_directory_uri(); ?>/assets/img/testimonial-1.jpg" style="width: 60px; height: 60px;">
-                    <div class="ps-4">
-                        <h4 class="text-primary mb-1">Client Name</h4>
-                        <small class="text-uppercase">Profession</small>
+            <?php
+            $args = array(
+                'post_type' => 'testimonial',
+                'posts_per_page' => 8,
+            );
+            $testimonial = new WP_Query($args);
+            if ($testimonial->have_posts()) {
+                while ($testimonial->have_posts()) {
+                    $testimonial->the_post();
+                    $client_image = get_field('client_image');
+                    $client_designation = get_field('client_designation');
+                    $client_speech = get_field('client_speech');
+
+            ?>
+                    <div class="testimonial-item bg-light my-4">
+                        <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
+                            <img class="img-fluid rounded" src="<?php echo $client_image; ?>" style="width: 60px; height: 60px;">
+                            <div class="ps-4">
+                                <h4 class="text-primary mb-1"><?php the_title(); ?></h4>
+                                <small class="text-uppercase"><?php echo $client_designation; ?></small>
+                            </div>
+                        </div>
+                        <div class="pt-4 pb-5 px-5">
+                            <?php echo $client_speech; ?>
+                        </div>
                     </div>
-                </div>
-                <div class="pt-4 pb-5 px-5">
-                    Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
-                </div>
-            </div>
-            <div class="testimonial-item bg-light my-4">
-                <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                    <img class="img-fluid rounded" src="<?php echo get_template_directory_uri(); ?>/assets/img/testimonial-2.jpg" style="width: 60px; height: 60px;">
-                    <div class="ps-4">
-                        <h4 class="text-primary mb-1">Client Name</h4>
-                        <small class="text-uppercase">Profession</small>
-                    </div>
-                </div>
-                <div class="pt-4 pb-5 px-5">
-                    Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
-                </div>
-            </div>
-            <div class="testimonial-item bg-light my-4">
-                <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                    <img class="img-fluid rounded" src="<?php echo get_template_directory_uri(); ?>/assets/img/testimonial-3.jpg" style="width: 60px; height: 60px;">
-                    <div class="ps-4">
-                        <h4 class="text-primary mb-1">Client Name</h4>
-                        <small class="text-uppercase">Profession</small>
-                    </div>
-                </div>
-                <div class="pt-4 pb-5 px-5">
-                    Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
-                </div>
-            </div>
-            <div class="testimonial-item bg-light my-4">
-                <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
-                    <img class="img-fluid rounded" src="<?php echo get_template_directory_uri(); ?>/assets/img/testimonial-4.jpg" style="width: 60px; height: 60px;">
-                    <div class="ps-4">
-                        <h4 class="text-primary mb-1">Client Name</h4>
-                        <small class="text-uppercase">Profession</small>
-                    </div>
-                </div>
-                <div class="pt-4 pb-5 px-5">
-                    Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
-                </div>
-            </div>
+            <?php
+                }
+            }
+            wp_reset_postdata();
+            ?>
         </div>
     </div>
 </div>
@@ -445,57 +428,47 @@
             <h1 class="mb-0">Professional Stuffs Ready to Help Your Business</h1>
         </div>
         <div class="row g-5">
-            <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
-                <div class="team-item bg-light rounded overflow-hidden">
-                    <div class="team-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="<?php echo get_template_directory_uri(); ?>/assets/img/team-1.jpg" alt="">
-                        <div class="team-social">
-                            <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-twitter fw-normal"></i></a>
-                            <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
-                            <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-instagram fw-normal"></i></a>
-                            <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
+            <?php
+            $args = array(
+                'post_type' => 'team',
+                'posts_per_page' => 3,
+            );
+            $team = new WP_Query($args);
+            if ($team->have_posts()) {
+                while ($team->have_posts()) {
+                    $team->the_post();
+                    $team_designation = get_field('team_designation');
+                    $team_social_info = get_field('team_social_info');
+
+            ?>
+                    <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
+                        <div class="team-item bg-light rounded overflow-hidden">
+                            <div class="team-img position-relative overflow-hidden">
+                                <img class="img-fluid w-100" src="<?php echo the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
+                                <div class="team-social">
+                                    <?php
+                                    foreach ($team_social_info as $social) {
+                                        $social_icon = $social['team_social_icon'];
+                                        $social_url = $social['team_social_link'];
+                                    ?>
+                                        <a class="btn btn-lg btn-primary btn-lg-square rounded" href="<?php echo $social_url; ?>"><i class="<?php echo $social_icon; ?> fw-normal"></i></a>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="text-center py-4">
+                                <h4 class="text-primary"><?php the_title(); ?></h4>
+                                <p class="text-uppercase m-0"><?php echo $team_designation; ?></p>
+                            </div>
                         </div>
                     </div>
-                    <div class="text-center py-4">
-                        <h4 class="text-primary">Full Name</h4>
-                        <p class="text-uppercase m-0">Designation</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
-                <div class="team-item bg-light rounded overflow-hidden">
-                    <div class="team-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="<?php echo get_template_directory_uri(); ?>/assets/img/team-2.jpg" alt="">
-                        <div class="team-social">
-                            <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-twitter fw-normal"></i></a>
-                            <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
-                            <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-instagram fw-normal"></i></a>
-                            <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
-                        </div>
-                    </div>
-                    <div class="text-center py-4">
-                        <h4 class="text-primary">Full Name</h4>
-                        <p class="text-uppercase m-0">Designation</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 wow slideInUp" data-wow-delay="0.9s">
-                <div class="team-item bg-light rounded overflow-hidden">
-                    <div class="team-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="<?php echo get_template_directory_uri(); ?>/assets/img/team-3.jpg" alt="">
-                        <div class="team-social">
-                            <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-twitter fw-normal"></i></a>
-                            <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
-                            <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-instagram fw-normal"></i></a>
-                            <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
-                        </div>
-                    </div>
-                    <div class="text-center py-4">
-                        <h4 class="text-primary">Full Name</h4>
-                        <p class="text-uppercase m-0">Designation</p>
-                    </div>
-                </div>
-            </div>
+            <?php
+                }
+            }
+            ?>
+
+
         </div>
     </div>
 </div>
