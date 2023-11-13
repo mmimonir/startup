@@ -30,7 +30,7 @@ function startup_setup()
 {
     load_theme_textdomain('startup', get_template_directory() . '/languages');
 
-    add_theme_support('post-thumbnails', array('slider', 'team'));
+    add_theme_support('post-thumbnails', array('post', 'slider', 'team'));
 
     register_nav_menus(array(
         'primary-menu' => __('Primary Menu', 'startup')
