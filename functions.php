@@ -29,7 +29,7 @@ class Custom_Menu_Walker extends Walker_Nav_Menu
 function startup_setup()
 {
     load_theme_textdomain('startup', get_template_directory() . '/languages');
-
+    add_theme_support('title-tag');
     add_theme_support('post-thumbnails', array('post', 'slider', 'team'));
 
     register_nav_menus(array(
