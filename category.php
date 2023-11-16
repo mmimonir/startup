@@ -1,4 +1,4 @@
-<?php get_header();  ?>
+<?php get_header(); ?>
 <?php get_template_part('template-parts/content', 'breadcumb'); ?>
 
 <!-- Blog Start -->
@@ -9,14 +9,9 @@
             <div class="col-lg-8">
                 <div class="row g-5">
                     <?php
-                    $args = array(
-                        'post_type' => 'post',
-                    );
-                    $post_data = new WP_Query($args);
-                    if ($post_data->have_posts()) {
-                        while ($post_data->have_posts()) {
-                            $post_data->the_post();
-
+                    if (have_posts()) {
+                        while (have_posts()) {
+                            the_post();
                             // get author data
                             $author_id = get_the_author_meta('ID');
                             $author_name = get_the_author_meta('display_name', $author_id);
@@ -80,6 +75,5 @@
     </div>
 </div>
 <!-- Blog End -->
-
 
 <?php get_footer(); ?>
