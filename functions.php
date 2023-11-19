@@ -251,36 +251,27 @@ add_filter('acf/settings/save_json', 'startup_acf_json');
 // Pagination
 function startup_pagination()
 {
-
     if (is_singular())
         return;
-
     global $wp_query;
-
     /** Stop execution if there's only 1 page */
     if ($wp_query->max_num_pages <= 1)
         return;
-
     $paged = get_query_var('paged') ? absint(get_query_var('paged')) : 1;
     $max   = intval($wp_query->max_num_pages);
-
     /** Add current page to the array */
     if ($paged >= 1)
         $links[] = $paged;
-
     /** Add the pages around the current page to the array */
     if ($paged >= 3) {
         $links[] = $paged - 1;
         $links[] = $paged - 2;
     }
-
     if (($paged + 2) <= $max) {
         $links[] = $paged + 2;
         $links[] = $paged + 1;
     }
-
     echo '<div class="navigation"><ul>' . "\n";
-
     /** Previous Post Link */
     if (get_previous_posts_link())
         printf('<li>%s</li>' . "\n", get_previous_posts_link());
@@ -294,7 +285,6 @@ function startup_pagination()
         if (!in_array(2, $links))
             echo '<li>…</li>';
     }
-
     /** Link to current page, plus 2 pages in either direction if necessary */
     sort($links);
     foreach ((array) $links as $link) {
@@ -363,7 +353,6 @@ class startup_search_widget extends WP_Widget
 ?>
             <!-- Search Form Start -->
             <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
-
                 <form action="<?php echo home_url('/'); ?>" method="get">
                     <div class="input-group">
                         <input type="search" name="s" value="<?php echo get_search_query(); ?>" class="form-control p-3" placeholder="Keyword">
@@ -374,7 +363,6 @@ class startup_search_widget extends WP_Widget
             </div>
             <!-- Search Form End -->
         <?php
-
             echo $args['after_widget'];
         }
     }
@@ -386,12 +374,13 @@ class startup_search_widget extends WP_Widget
             $title = $instance['title'];
         } else {
             $title = __('Search', 'startup');
-        ?>
-            <p>
-                <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
-                <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>">
-            <?php
         }
+        ?>
+        <p>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
+        </p>
+        <?php
     }
 
     // Updating widget replacing old instances with new
@@ -439,8 +428,8 @@ class startup_category_widget extends WP_Widget
         echo $args['before_widget'];
         if (!empty($title)) {
             echo $args['before_title'] . $title . $args['after_title'];
-            ?>
-                <!-- Category Start -->
+        ?>
+            <!-- Category Start -->
             <div class="link-animated d-flex flex-column justify-content-start">
                 <?php
                 $cats = get_categories();
@@ -464,114 +453,294 @@ class startup_category_widget extends WP_Widget
             $title = $instance['title'];
         } else {
             $title = __('Categories', 'startup');
+        }
+        ?>
+        <p>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
+        </p>
+        <?php
+
+    }
+
+    // Updating widget replacing old instances with new
+    public function update($new_instance, $old_instance)
+    {
+        $instance = array();
+        $instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
+        return $instance;
+    }
+
+    // Class wpb_widget ends here
+}
+
+// Register and load the widget
+function startup_category_widget_load()
+{
+    register_widget('startup_category_widget');
+}
+
+add_action('widgets_init', 'startup_category_widget_load');
+
+// Startup Recent Post Widget
+class startup_recent_widget extends WP_Widget
+{
+
+    // The construct part
+    function __construct()
+    {
+        parent::__construct(
+            // Base ID of your widget
+            'startup_recent_widget',
+
+            // Widget name will appear in UI
+            __('Startup Recent Post Widget', 'startup'),
+
+            // Widget description
+            array('description' => __('Search Widget for Startup Theme', 'startup'),)
+        );
+    }
+
+    // Creating widget front-end
+    public function widget($args, $instance)
+    {
+        $title = apply_filters('widget_title', $instance['title']);
+        echo $args['before_widget'];
+
+        if (!empty($title)) {
+            echo $args['before_title'] . $title . $args['after_title'];
+            $arg = array(
+                'post_type' => 'post',
+                'posts_per_page' => 5,
+            );
+            $query = new WP_Query($arg);
+            if ($query->have_posts()) {
+                while ($query->have_posts()) {
+                    $query->the_post();
+        ?>
+                    <div class="d-flex rounded overflow-hidden mb-3">
+                        <img class="img-fluid" src="<?php the_post_thumbnail_url(); ?>" style="width: 100px; height: 100px; object-fit: cover;" alt="">
+                        <a href="<?php the_permalink(); ?>" class="h5 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0"><?php the_title();  ?>
+                        </a>
+                    </div>
+        <?php
+                }
+                wp_reset_postdata();
+            }
+            echo $args['after_widget'];
+        }
+    }
+
+    // Creating widget Backend
+    public function form($instance)
+    {
+        if (isset($instance['title'])) {
+            $title = $instance['title'];
+        } else {
+            $title = __('Categories', 'startup');
+        }
         ?>
 
-            <p>
-                <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
-                <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>">
+        <p>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
+        </p>
+        <?php
+
+    }
+
+    // Updating widget replacing old instances with new
+    public function update($new_instance, $old_instance)
+    {
+        $instance = array();
+        $instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
+        return $instance;
+    }
+
+    // Class wpb_widget ends here
+}
+
+// Register and load the widget
+function startup_recent_post_widget_load()
+{
+    register_widget('startup_recent_widget');
+}
+
+add_action('widgets_init', 'startup_recent_post_widget_load');
+
+// Startup Tags Widget
+class startup_tags_widget extends WP_Widget
+{
+
+    // The construct part
+    function __construct()
+    {
+        parent::__construct(
+            // Base ID of your widget
+            'startup_tags_widget',
+
+            // Widget name will appear in UI
+            __('Startup Tags Widget', 'startup'),
+
+            // Widget description
+            array('description' => __('Search Widget for Startup Theme', 'startup'),)
+        );
+    }
+
+    // Creating widget front-end
+    public function widget($args, $instance)
+    {
+        $title = apply_filters('widget_title', $instance['title']);
+        echo $args['before_widget'];
+
+        if (!empty($title)) {
+            echo $args['before_title'] . $title . $args['after_title'];
+        ?>
+            <div class="d-flex flex-wrap m-n1">
                 <?php
-            }
-        }
-
-        // Updating widget replacing old instances with new
-        public function update($new_instance, $old_instance)
-        {
-            $instance = array();
-            $instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
-            return $instance;
-        }
-
-        // Class wpb_widget ends here
-    }
-
-    // Register and load the widget
-    function startup_category_widget_load()
-    {
-        register_widget('startup_category_widget');
-    }
-
-    add_action('widgets_init', 'startup_category_widget_load');
-
-    // Startup Recent Post Widget
-    class startup_recent_widget extends WP_Widget
-    {
-
-        // The construct part
-        function __construct()
-        {
-            parent::__construct(
-                // Base ID of your widget
-                'startup_recent_widget',
-
-                // Widget name will appear in UI
-                __('Startup Recent Post Widget', 'startup'),
-
-                // Widget description
-                array('description' => __('Search Widget for Startup Theme', 'startup'),)
-            );
-        }
-
-        // Creating widget front-end
-        public function widget($args, $instance)
-        {
-            $title = apply_filters('widget_title', $instance['title']);
-            echo $args['before_widget'];
-
-            if (!empty($title)) {
-                echo $args['before_title'] . $title . $args['after_title'];
-                $arg = array(
-                    'post_type' => 'post',
-                    'posts_per_page' => 5,
-                );
-                $query = new WP_Query($arg);
-                if ($query->have_posts()) {
-                    while ($query->have_posts()) {
-                        $query->the_post();
+                $tags = get_tags();
+                foreach ($tags as $tag) {
                 ?>
-            <div class="d-flex rounded overflow-hidden mb-3">
-                <img class="img-fluid" src="<?php the_post_thumbnail_url(); ?>" style="width: 100px; height: 100px; object-fit: cover;" alt="">
-                <a href="<?php the_permalink(); ?>" class="h5 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0"><?php the_title();  ?>
-                </a>
-            </div>
-    <?php
-                    }
-                    wp_reset_postdata();
+                    <a href="<?php echo get_tag_link($tag->term_id); ?>" class="btn btn-light m-1"><?php echo $tag->name; ?></a>
+                <?php
                 }
-                echo $args['after_widget'];
-            }
+                ?>
+            </div>
+        <?php
+            echo $args['after_widget'];
         }
-
-        // Creating widget Backend
-        public function form($instance)
-        {
-            if (isset($instance['title'])) {
-                $title = $instance['title'];
-            } else {
-                $title = __('Categories', 'startup');
-    ?>
-
-    <p>
-        <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
-        <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>">
-<?php
-            }
-        }
-
-        // Updating widget replacing old instances with new
-        public function update($new_instance, $old_instance)
-        {
-            $instance = array();
-            $instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
-            return $instance;
-        }
-
-        // Class wpb_widget ends here
     }
 
-    // Register and load the widget
-    function startup_recent_post_widget_load()
+    // Creating widget Backend
+    public function form($instance)
     {
-        register_widget('startup_recent_widget');
+        if (isset($instance['title'])) {
+            $title = $instance['title'];
+        } else {
+            $title = __('Tags Cloud', 'startup');
+        }
+        ?>
+
+        <p>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
+        </p>
+        <?php
+
     }
 
-    add_action('widgets_init', 'startup_recent_post_widget_load');
+    // Updating widget replacing old instances with new
+    public function update($new_instance, $old_instance)
+    {
+        $instance = array();
+        $instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
+        return $instance;
+    }
+
+    // Class wpb_widget ends here
+}
+
+// Register and load the widget
+function startup_tags_widget_load()
+{
+    register_widget('startup_tags_widget');
+}
+
+add_action('widgets_init', 'startup_tags_widget_load');
+
+// Startup Plain Text Widget
+class startup_plain_text_widget extends WP_Widget
+{
+
+    // The construct part
+    function __construct()
+    {
+        parent::__construct(
+            // Base ID of your widget
+            'startup_plain_text_widget',
+
+            // Widget name will appear in UI
+            __('Startup Plain Text Widget', 'startup'),
+
+            // Widget description
+            array('description' => __('Search Widget for Startup Theme', 'startup'),)
+        );
+    }
+
+    // Creating widget front-end
+    public function widget($args, $instance)
+    {
+        $title = apply_filters('widget_title', $instance['title']);
+        $plain_text = $instance['plain_text'];
+        $plain_btn_text = $instance['plain_btn_text'];
+        $plain_btn_url = $instance['plain_btn_url'];
+
+        echo $args['before_widget'];
+
+        if (!empty($title)) {
+            echo $args['before_title'] . $title . $args['after_title'];
+        ?>
+            <!-- Plain Text Start -->
+            <div class="bg-light text-center" style="padding: 30px;">
+                <p><?php echo $plain_text; ?></p>
+                <a href="<?php echo $plain_btn_url; ?>" class="btn btn-primary py-2 px-4"><?php echo $plain_btn_text; ?></a>
+            </div>
+            <!-- Plain Text End -->
+        <?php
+            echo $args['after_widget'];
+        }
+    }
+
+    // Creating widget Backend
+    public function form($instance)
+    {
+        if (isset($instance['title'])) {
+            $title = $instance['title'];
+        } else {
+            $title = __('Plain Text', 'startup');
+        }
+        $plain_text = $instance['plain_text'];
+        $plain_btn_text = $instance['plain_btn_text'];
+        $plain_btn_url = $instance['plain_btn_url'];
+        ?>
+        <p>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('plain_text'); ?>"><?php _e('Text:'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('plain_text'); ?>" name="<?php echo $this->get_field_name('plain_text'); ?>" type="text" value="<?php echo esc_attr($plain_text); ?>" />
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('plain_btn_text'); ?>"><?php _e('Button Text:'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('plain_btn_text'); ?>" name="<?php echo $this->get_field_name('plain_btn_text'); ?>" type="text" value="<?php echo esc_attr($plain_btn_text); ?>" />
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('plain_btn_url'); ?>"><?php _e('Button URL:'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('plain_btn_url'); ?>" name="<?php echo $this->get_field_name('plain_btn_url'); ?>" type="url" value="<?php echo esc_attr($plain_btn_url); ?>" />
+        </p>
+<?php
+    }
+    // Updating widget replacing old instances with new
+    public function update($new_instance, $old_instance)
+    {
+        $instance = array();
+        $instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
+
+        $instance['plain_text'] = $new_instance['plain_text'];
+        $instance['plain_btn_text'] = $new_instance['plain_btn_text'];
+        $instance['plain_btn_url'] = $new_instance['plain_btn_url'];
+
+        return $instance;
+    }
+
+    // Class wpb_widget ends here
+}
+
+// Register and load the widget
+function startup_plain_text_widget_load()
+{
+    register_widget('startup_plain_text_widget');
+}
+
+add_action('widgets_init', 'startup_plain_text_widget_load');
