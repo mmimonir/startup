@@ -13,3 +13,50 @@ Requires PHP: 5.6
 Description: Wordpress Multipurpose Website With Premium Features.
 Tags: one-column, flexible-header, accessibility-ready, custom-colors, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, rtl-language-support, sticky-post, threaded-comments, translation-ready, block-patterns
 =================================*/
+
+.widget_nav_menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.widget_nav_menu ul li a {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 10px;
+  display: block;
+}
+.widget_nav_menu ul li {
+  position: relative;
+  padding-left: 20px;
+}
+.widget_nav_menu ul li:before {
+  content: "\f061";
+  font-weight: 700;
+  font-family: "Font Awesome 5 Free";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  color: #06a3da !important;
+}
+
+.comment-notes,
+.comment-form label,
+.comment-form-cookies-consent {
+  display: none;
+}
+.comment-form input,
+.comment-form textarea {
+  width: 100%;
+  border: 0;
+  padding: 0.375rem 0.75rem;
+  height: 55px;
+}
+.comment-form textarea {
+  height: 150px;
+}
+.comment-form #submit {
+  background-color: #06a3da;
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+}

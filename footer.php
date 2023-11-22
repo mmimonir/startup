@@ -43,30 +43,14 @@
                         } ?>
                     </div>
                     <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                        <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                            <h3 class="text-light mb-0">Quick Links</h3>
-                        </div>
-                        <div class="link- d-flex flex-column justify-content-start">
-                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>Home</a>
-                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>About Us</a>
-                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>Our Services</a>
-                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>Meet The Team</a>
-                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>Latest Blog</a>
-                            <a class="text-light" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>Contact Us</a>
-                        </div>
+                        <?php if (is_active_sidebar('footer-1')) {
+                            dynamic_sidebar('footer-1');
+                        } ?>
                     </div>
                     <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                        <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                            <h3 class="text-light mb-0">Popular Links</h3>
-                        </div>
-                        <div class="link- d-flex flex-column justify-content-start">
-                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>Home</a>
-                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>About Us</a>
-                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>Our Services</a>
-                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>Meet The Team</a>
-                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>Latest Blog</a>
-                            <a class="text-light" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>Contact Us</a>
-                        </div>
+                        <?php if (is_active_sidebar('footer-2')) {
+                            dynamic_sidebar('footer-2');
+                        } ?>
                     </div>
                 </div>
             </div>
