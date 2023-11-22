@@ -372,6 +372,42 @@ function startup_footer2_widget()
 
 add_action('widgets_init', 'startup_footer2_widget');
 
+// filter comment form fields
+function startup_move_comment_field($fields)
+{
+    $comment_field = $fields['comment'];
+    unset($fields['comment']);
+    $fields['comment'] = $comment_field;
+    return $fields;
+}
+add_filter('comment_form_fields', 'startup_move_comment_field');
+
+function startup_comment_form_fields($fields)
+{
+    foreach ($fields as &$field) {
+        $field = str_replace('id="author"', 'id="author" placeholder="Your Name"', $field);
+        $field = str_replace('id="email"', 'id="email" placeholder="Your Email"', $field);
+        $field = str_replace('id="url"', 'id="url" placeholder="Website"', $field);
+    }
+    return $fields;
+}
+add_filter('comment_form_default_fields', 'startup_comment_form_fields');
+
+function startup_comment_textarea_placeholder($args)
+{
+    $args['comment_field'] = str_replace('textarea', 'textarea placeholder="Comment"', $args['comment_field']);
+    return $args;
+}
+add_filter('comment_form_defaults', 'startup_comment_textarea_placeholder');
+
+// change submit button text in wordpress comment form
+function startup_comment_submit_button($defaults)
+{
+    $defaults['label_submit'] = __('Leave Your Comment', 'startup');
+    return $defaults;
+}
+add_filter('comment_form_defaults', 'startup_comment_submit_button');
+
 // Startup Search Widget
 include_once get_template_directory() . '/inc/widgets/search-widgets.php';
 
