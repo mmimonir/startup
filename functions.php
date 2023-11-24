@@ -408,6 +408,22 @@ function startup_comment_submit_button($defaults)
 }
 add_filter('comment_form_defaults', 'startup_comment_submit_button');
 
+
+// Theme Options with ACF
+if (function_exists('acf_add_options_page')) {
+    acf_add_options_page(array(
+        'page_title'    => __('Theme General Settings', 'startup'),
+        'menu_title'    => __('Theme Settings', 'startup'),
+        'menu_slug'     => 'theme-general-settings',
+        'capability'    => 'edit_posts',
+        'redirect'      => false
+    ));
+}
+
+
+
+
+
 // Startup Search Widget
 include_once get_template_directory() . '/inc/widgets/search-widgets.php';
 
