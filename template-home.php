@@ -34,8 +34,15 @@ get_header();  ?>
                         <div class="p-3" style="max-width: 900px;">
                             <h5 class="text-white text-uppercase mb-3 animated slideInDown"><?php echo $slider_subtitle; ?></h5>
                             <h1 class="display-1 text-white mb-md-4 animated zoomIn"><?php the_title(); ?></h1>
-                            <a href="<?php echo $slider_btn_1_url; ?>" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft"><?php echo $slider_btn_1_text; ?></a>
-                            <a href="<?php echo $slider_btn_2_url; ?>" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight"><?php echo $slider_btn_2_text; ?></a>
+                            <a href="<?php echo esc_url($slider_btn_1_url); ?>" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft"><?php echo $slider_btn_1_text; ?></a>
+                            <?php
+                            if ($slider_btn_2_text) {
+                            ?>
+                                <a href="<?php echo $slider_btn_2_url; ?>" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight"><?php echo $slider_btn_2_text; ?></a>
+                            <?php
+                            }
+                            ?>
+
                         </div>
                     </div>
                 </div>

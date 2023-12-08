@@ -61,7 +61,10 @@
         <div class="row justify-content-end">
             <div class="col-lg-8 col-md-6">
                 <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
-                    <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">Your Site Name</a>. All Rights Reserved.
+                    <?php
+                    $footer_copyright = get_field('footer_copyright', 'option');
+                    echo $footer_copyright;
+                    ?>
                 </div>
             </div>
         </div>
@@ -71,7 +74,7 @@
 
 
 <!-- Back to Top -->
-<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
+<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="fa fa-arrow-up"></i></a>
 
 
 <?php wp_footer(); ?>
