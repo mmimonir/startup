@@ -15,9 +15,10 @@
             if ($team->have_posts()) {
                 while ($team->have_posts()) {
                     $team->the_post();
-                    $team_designation = get_field('team_designation');
-                    $team_social_info = get_field('team_social_info');
-
+                    if (acf()) {
+                        $team_designation = get_field('team_designation');
+                        $team_social_info = get_field('team_social_info');
+                    }
             ?>
                     <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
                         <div class="team-item bg-light rounded overflow-hidden">
@@ -25,11 +26,20 @@
                                 <img class="img-fluid w-100" src="<?php echo the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
                                 <div class="team-social">
                                     <?php
-                                    foreach ($team_social_info as $social) {
-                                        $social_icon = $social['team_social_icon'];
-                                        $social_url = $social['team_social_link'];
+                                    if (acf()) {
+                                        foreach ($team_social_info as $social) {
+                                            $social_icon = $social['team_social_icon'];
+                                            $social_url = $social['team_social_link'];
                                     ?>
-                                        <a class="btn btn-lg btn-primary btn-lg-square rounded" href="<?php echo $social_url; ?>"><i class="<?php echo $social_icon; ?> fw-normal"></i></a>
+                                            <a class="btn btn-lg btn-primary btn-lg-square rounded" href="<?php echo $social_url; ?>"><i class="<?php echo $social_icon; ?> fw-normal"></i></a>
+                                        <?php
+                                        }
+                                    } else {
+                                        ?>
+                                        <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-twitter fw-normal"></i></a>
+                                        <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
+                                        <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-instagram fw-normal"></i></a>
+                                        <a class="btn btn-lg btn-primary btn-lg-square rounded" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
                                     <?php
                                     }
                                     ?>
@@ -37,7 +47,7 @@
                             </div>
                             <div class="text-center py-4">
                                 <h4 class="text-primary"><?php the_title(); ?></h4>
-                                <p class="text-uppercase m-0"><?php echo $team_designation; ?></p>
+                                <p class="text-uppercase m-0"><?php echo acf() ? $team_designation : 'Designation'; ?></p>
                             </div>
                         </div>
                     </div>
