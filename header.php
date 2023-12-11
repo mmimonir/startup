@@ -27,14 +27,14 @@
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
                     <?php
-                    function acf()
+                    function acf_pro()
                     {
                         if (class_exists("ACF")) {
                             return true;
                         }
                         return false;
                     }
-                    if (class_exists('ACF')) {
+                    if (acf_pro()) {
                         $header_infos = get_field('header_infos', 'option');
                         foreach ($header_infos as $info) {
                     ?>
@@ -54,7 +54,7 @@
             <div class="col-lg-4 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
                     <?php
-                    if (class_exists('ACF')) {
+                    if (acf_pro()) {
                         $social_infos = get_field('header_socials', 'option');
                         foreach ($social_infos as $info) {
                     ?>

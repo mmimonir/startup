@@ -15,7 +15,7 @@
             if ($team->have_posts()) {
                 while ($team->have_posts()) {
                     $team->the_post();
-                    if (acf()) {
+                    if (acf_pro()) {
                         $team_designation = get_field('team_designation');
                         $team_social_info = get_field('team_social_info');
                     }
@@ -26,7 +26,7 @@
                                 <img class="img-fluid w-100" src="<?php echo the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
                                 <div class="team-social">
                                     <?php
-                                    if (acf()) {
+                                    if (acf_pro()) {
                                         foreach ($team_social_info as $social) {
                                             $social_icon = $social['team_social_icon'];
                                             $social_url = $social['team_social_link'];
@@ -47,7 +47,7 @@
                             </div>
                             <div class="text-center py-4">
                                 <h4 class="text-primary"><?php the_title(); ?></h4>
-                                <p class="text-uppercase m-0"><?php echo acf() ? $team_designation : 'Designation'; ?></p>
+                                <p class="text-uppercase m-0"><?php echo acf_pro() ? $team_designation : 'Designation'; ?></p>
                             </div>
                         </div>
                     </div>
