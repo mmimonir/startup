@@ -1,8 +1,47 @@
 <?php
-$feature_subtitle = get_field('feature_subtitle', 'option');
-$feature_title = get_field('feature_title', 'option');
-$features = get_field('feature', 'option');
-$feature_column = get_field('feature_column', 'option');
+if (acf_pro()) {
+    $feature_subtitle = get_field('feature_subtitle', 'option');
+    $feature_title = get_field('feature_title', 'option');
+    $features = get_field('feature', 'option');
+    $feature_column = get_field('feature_column', 'option');
+} else {
+    $feature_subtitle = 'FEATURES';
+    $feature_title = 'We Provide Many Features You Can Use';
+    $features = array(
+        array(
+            'feature_icon' => 'fas fa-check',
+            'feature_heading' => 'Award Winning',
+            'feature_description' => 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut.'
+        ),
+        array(
+            'feature_icon' => 'fas fa-check',
+            'feature_heading' => 'Professional Staff',
+            'feature_description' => 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut.'
+        ),
+        array(
+            'feature_icon' => 'fas fa-check',
+            'feature_heading' => '24/7 Support',
+            'feature_description' => 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut.'
+        ),
+        array(
+            'feature_icon' => 'fas fa-check',
+            'feature_heading' => 'Fair Prices',
+            'feature_description' => 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut.'
+        ),
+        array(
+            'feature_icon' => 'fas fa-check',
+            'feature_heading' => 'Fair Prices',
+            'feature_description' => 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut.'
+        ),
+        array(
+            'feature_icon' => 'fas fa-check',
+            'feature_heading' => 'Fair Prices',
+            'feature_description' => 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut.'
+        ),
+
+    );
+    $feature_column = 'col-lg-4';
+}
 ?>
 <!-- Features Start -->
 <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
