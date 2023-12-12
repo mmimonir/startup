@@ -1,7 +1,5 @@
 <!-- About Start -->
 <?php
-
-
 $about_image = get_field('about_image', 'option');
 $about_subtitle = get_field('about_subtitle', 'option');
 $about_title = get_field('about_title', 'option');
@@ -12,8 +10,6 @@ $about_info_subtitle = get_field('about_info_subtitle', 'option');
 $about_info_title = get_field('about_info_title', 'option');
 $about_button_text = get_field('about_button_text', 'option');
 $about_button_url = get_field('about_button_url', 'option');
-
-
 ?>
 <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div class="container py-5">
@@ -49,7 +45,7 @@ $about_button_url = get_field('about_button_url', 'option');
             </div>
             <div class="col-lg-5" style="min-height: 500px;">
                 <div class="position-relative h-100">
-                    <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="<?php $about_image['url'];  ?>" style="object-fit: cover;">
+                    <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="<?php echo $about_image['url'];  ?>" style="object-fit: cover;">
                 </div>
             </div>
         </div>
