@@ -1,7 +1,3 @@
-<?php
-if (acf_pro()) {
-
-?>
     <!-- Vendor Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5 mb-5">
@@ -85,7 +81,3 @@ if (acf_pro()) {
     </body>
 
     </html>
-<?php
-} else {
-    get_template_part('demo-data/footer');
-}

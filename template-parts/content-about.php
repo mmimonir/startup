@@ -1,28 +1,18 @@
 <!-- About Start -->
 <?php
 
-if (acf_pro()) {
-    $about_image = get_field('about_image', 'option');
-    $about_subtitle = get_field('about_subtitle', 'option');
-    $about_title = get_field('about_title', 'option');
-    $about_description = get_field('about_description', 'option');
-    $about_features = get_field('about_features', 'option');
-    $about_info_icon = get_field('about_info_icon', 'option');
-    $about_info_subtitle = get_field('about_info_subtitle', 'option');
-    $about_info_title = get_field('about_info_title', 'option');
-    $about_button_text = get_field('about_button_text', 'option');
-    $about_button_url = get_field('about_button_url', 'option');
-} else {
-    // $about_image = 'assets/img/about.jpg';
-    $about_subtitle = 'ABOUT US';
-    $about_title = 'The Best IT Solution With 10 Years of Experience';
-    $about_description = 'Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor eirmod magna dolore erat amet';
-    $about_info_icon = 'fas fa-check';
-    $about_info_subtitle = 'Call to ask any question';
-    $about_info_title = '+012 345 6789';
-    $about_button_text = 'Request A Quote';
-    $about_button_url = 'https://www.google.com/';
-}
+
+$about_image = get_field('about_image', 'option');
+$about_subtitle = get_field('about_subtitle', 'option');
+$about_title = get_field('about_title', 'option');
+$about_description = get_field('about_description', 'option');
+$about_features = get_field('about_features', 'option');
+$about_info_icon = get_field('about_info_icon', 'option');
+$about_info_subtitle = get_field('about_info_subtitle', 'option');
+$about_info_title = get_field('about_info_title', 'option');
+$about_button_text = get_field('about_button_text', 'option');
+$about_button_url = get_field('about_button_url', 'option');
+
 
 ?>
 <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -36,23 +26,11 @@ if (acf_pro()) {
                 <p class="mb-4"><?php echo $about_description; ?></p>
                 <div class="row g-0 mb-3">
                     <?php
-                    if (acf_pro()) {
-                        foreach ($about_features as $feature) {
+
+                    foreach ($about_features as $feature) {
                     ?>
-                            <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
-                                <h5 class="mb-3"><i class="<?php echo $feature['about_feature_icon']; ?> text-primary me-3"></i><?php echo $feature['about_feature_title']; ?></h5>
-                            </div>
-                        <?php
-                        }
-                    } else {
-                        ?>
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Award Winning</h5>
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Professional Staff</h5>
-                        </div>
-                        <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>24/7 Support</h5>
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Fair Prices</h5>
+                            <h5 class="mb-3"><i class="<?php echo $feature['about_feature_icon']; ?> text-primary me-3"></i><?php echo $feature['about_feature_title']; ?></h5>
                         </div>
                     <?php
                     }
@@ -71,7 +49,7 @@ if (acf_pro()) {
             </div>
             <div class="col-lg-5" style="min-height: 500px;">
                 <div class="position-relative h-100">
-                    <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="<?php echo acf_pro() ? $about_image['url'] : 'assets/img/about.jpg';  ?>" style="object-fit: cover;">
+                    <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="<?php $about_image['url'];  ?>" style="object-fit: cover;">
                 </div>
             </div>
         </div>

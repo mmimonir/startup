@@ -30,9 +30,9 @@
 
 <body>
     <!-- Spinner Start -->
-    <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner"></div>
-    </div> -->
+    </div>
     <!-- Spinner End -->
 
 
@@ -72,9 +72,9 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <ul>
-                        <li><a href="index.html" class="nav-item nav-link">Home</a></li>
-                        <li><a href="about.html" class="nav-item nav-link">About</a></li>
-                        <li><a href="service.html" class="nav-item nav-link">Services</a></li>
+                        <li><a href="<?php echo get_home_url(); ?>" class="nav-item nav-link">Home</a></li>
+                        <li><a href="<?php echo get_home_url() . '/about'; ?>" class=" nav-item nav-link">About</a></li>
+                        <li><a href="<?php echo get_home_url() . '/services'; ?>" class="nav-item nav-link">Services</a></li>
                         <li><a href="#" class="nav-item nav-link">Blog</a>
                             <ul>
                                 <li><a href="blog.html">Blog Grid</a></li>
@@ -90,7 +90,7 @@
                                 <li><a href="quote.html">Free Quote</a></li>
                             </ul>
                         </li>
-                        <li><a href="contact.html" class="nav-item nav-link">Contact</a></li>
+                        <li><a href="<?php echo get_home_url() . '/contact'; ?>" class="nav-item nav-link">Contact</a></li>
                     </ul>
                 </div>
             </div>

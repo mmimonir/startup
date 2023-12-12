@@ -106,5 +106,6 @@ if (class_exists('ACF')) {
     <?php get_footer(); ?>
 <?php
 } else {
-    get_template_part('demo-data/home');
+    get_template_part('demo-data/template-home');
 }
+?>

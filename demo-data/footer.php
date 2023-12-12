@@ -1,49 +1,24 @@
-<?php
-
-?>
-<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+<!-- Vendor Start -->
+<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div class="container py-5 mb-5">
         <div class="bg-white">
-            <div class="owl-carousel vendor-carousel owl-loaded owl-drag">
-                <div class="owl-stage-outer">
-                    <div class="owl-stage" style="transform: translate3d(-2176px, 0px, 0px); transition: all 1s ease 0s; width: 4186px;">
-                        <div class="owl-item cloned" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-2.jpg" alt=""></div>
-                        <div class="owl-item cloned" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-3.jpg" alt=""></div>
-                        <div class="owl-item cloned" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-4.jpg" alt=""></div>
-                        <div class="owl-item cloned" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-5.jpg" alt=""></div>
-                        <div class="owl-item cloned" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-6.jpg" alt=""></div>
-                        <div class="owl-item cloned" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-7.jpg" alt=""></div>
-                        <div class="owl-item cloned" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-8.jpg" alt=""></div>
-                        <div class="owl-item cloned" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-9.jpg" alt=""></div>
-                        <div class="owl-item" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-1.jpg" alt=""></div>
-                        <div class="owl-item" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-2.jpg" alt=""></div>
-                        <div class="owl-item" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-3.jpg" alt=""></div>
-                        <div class="owl-item" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-4.jpg" alt=""></div>
-                        <div class="owl-item" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-5.jpg" alt=""></div>
-                        <div class="owl-item active" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-6.jpg" alt=""></div>
-                        <div class="owl-item active" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-7.jpg" alt=""></div>
-                        <div class="owl-item active" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-8.jpg" alt=""></div>
-                        <div class="owl-item active" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-9.jpg" alt=""></div>
-                        <div class="owl-item cloned active" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-1.jpg" alt=""></div>
-                        <div class="owl-item cloned active" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-2.jpg" alt=""></div>
-                        <div class="owl-item cloned active" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-3.jpg" alt=""></div>
-                        <div class="owl-item cloned active" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-4.jpg" alt=""></div>
-                        <div class="owl-item cloned" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-5.jpg" alt=""></div>
-                        <div class="owl-item cloned" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-6.jpg" alt=""></div>
-                        <div class="owl-item cloned" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-7.jpg" alt=""></div>
-                        <div class="owl-item cloned" style="width: 122.438px; margin-right: 45px;"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-8.jpg" alt=""></div>
-                    </div>
-                </div>
-                <div class="owl-nav disabled">
-                    <div class="owl-prev">prev</div>
-                    <div class="owl-next">next</div>
-                </div>
-                <div class="owl-dots disabled"></div>
+            <div class="owl-carousel vendor-carousel">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-1.jpg" alt="">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-2.jpg" alt="">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-3.jpg" alt="">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-4.jpg" alt="">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-5.jpg" alt="">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-6.jpg" alt="">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-7.jpg" alt="">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-8.jpg" alt="">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/vendor-9.jpg" alt="">
             </div>
         </div>
     </div>
 </div>
-<div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+<!-- Vendor End -->
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
     <div class="container">
         <div class="row gx-5">
             <div class="col-lg-4 col-md-6 footer-about">
@@ -90,12 +65,12 @@
                             <h3 class="text-light mb-0">Quick Links</h3>
                         </div>
                         <div class="link- d-flex flex-column justify-content-start">
-                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i>Home</a>
-                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i>About Us</a>
-                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i>Our Services</a>
-                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i>Meet The Team</a>
-                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i>Latest Blog</a>
-                            <a class="text-light" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i>Contact Us</a>
+                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>Home</a>
+                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>About Us</a>
+                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>Our Services</a>
+                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>Meet The Team</a>
+                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>Latest Blog</a>
+                            <a class="text-light" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>Contact Us</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
@@ -103,12 +78,12 @@
                             <h3 class="text-light mb-0">Popular Links</h3>
                         </div>
                         <div class="link- d-flex flex-column justify-content-start">
-                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i>Home</a>
-                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i>About Us</a>
-                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i>Our Services</a>
-                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i>Meet The Team</a>
-                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i>Latest Blog</a>
-                            <a class="text-light" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i>Contact Us</a>
+                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>Home</a>
+                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>About Us</a>
+                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>Our Services</a>
+                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>Meet The Team</a>
+                            <a class="text-light mb-2" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>Latest Blog</a>
+                            <a class="text-light" href="#"><i class="fas fa-long-arrow-alt-right text-primary me-2"></i></i>Contact Us</a>
                         </div>
                     </div>
                 </div>
@@ -121,15 +96,17 @@
         <div class="row justify-content-end">
             <div class="col-lg-8 col-md-6">
                 <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
-                    <p class="mb-0">© <a class="text-white border-bottom" href="#">Your Site Name</a>. All Rights Reserved.
-                    </p>
+                    <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">Your Site Name</a>. All Rights Reserved.
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- Footer End -->
+
+
 <!-- Back to Top -->
-<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="fa fa-arrow-up"></i></a>
+<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
 <!-- JavaScript Libraries -->
@@ -138,7 +115,7 @@
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/wow.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/waypoints.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/counterup.min.js"></script>
-<!-- <script src="<?php echo get_template_directory_uri(); ?>/assets/js/owl.carousel.min.js"></script> -->
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/owl.carousel.min.js"></script>
 
 <!-- Template Javascript -->
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/main.js"></script>
