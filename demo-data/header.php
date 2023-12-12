@@ -74,20 +74,20 @@
                     <ul>
                         <li><a href="<?php echo get_home_url(); ?>" class="nav-item nav-link">Home</a></li>
                         <li><a href="<?php echo get_home_url() . '/about'; ?>" class=" nav-item nav-link">About</a></li>
-                        <li><a href="<?php echo get_home_url() . '/services'; ?>" class="nav-item nav-link">Services</a></li>
+                        <li><a href="<?php echo get_home_url() . '/service'; ?>" class="nav-item nav-link">Services</a></li>
                         <li><a href="#" class="nav-item nav-link">Blog</a>
                             <ul>
-                                <li><a href="blog.html">Blog Grid</a></li>
-                                <li><a href="detail.html">Blog Detail</a></li>
+                                <li><a href="<?php echo get_home_url() . '/blog' ?>">Blog Grid</a></li>
+                                <li><a href="<?php echo get_home_url() . '/details' ?>">Blog Detail</a></li>
                             </ul>
                         </li>
                         <li><a href="#" class="nav-item nav-link">Pages</a>
                             <ul>
-                                <li><a href="price.html">Pricing Plan</a></li>
-                                <li><a href="feature.html">Our features</a></li>
-                                <li><a href="team.html">Team Members</a></li>
-                                <li><a href="testimonial.html">Testimonial</a></li>
-                                <li><a href="quote.html">Free Quote</a></li>
+                                <li><a href="<?php echo get_home_url() . '/pricing-plan'; ?>">Pricing Plan</a></li>
+                                <li><a href="<?php echo get_home_url() . '/our-features' ?>">Our features</a></li>
+                                <li><a href="<?php echo get_home_url() . '/team-members' ?>">Team Members</a></li>
+                                <li><a href="<?php echo get_home_url() . '/testimonial' ?>">Testimonial</a></li>
+                                <li><a href="<?php echo get_home_url() . '/free-quote' ?>">Free Quote</a></li>
                             </ul>
                         </li>
                         <li><a href="<?php echo get_home_url() . '/contact'; ?>" class="nav-item nav-link">Contact</a></li>

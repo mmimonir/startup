@@ -23,6 +23,6 @@
 <?php get_footer();
 } else {
     $requested_page = get_queried_object()->post_name;
-    // echo $requested_page;
+    // echo $requested_page;    
     get_template_part('demo-data/template-' . $requested_page);
 } ?>

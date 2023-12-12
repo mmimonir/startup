@@ -3,7 +3,7 @@
 /*
 Template Name: Template Team
 */
-get_template_part('template-parts/header');
+get_template_part('demo-data/header');
 ?>
 
 <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
@@ -17,9 +17,9 @@ get_template_part('template-parts/header');
     </div>
 </div>
 
-<?php get_template_part('demo_data/template-parts/team'); ?>
-<?php get_template_part('demo_data/template-parts/testimonial'); ?>
+<?php get_template_part('demo-data/template/team'); ?>
+<?php get_template_part('demo-data/template/testimonial'); ?>
 
 <?php
-get_template_part('template-parts/footer');
+get_template_part('demo-data/footer');
 ?>

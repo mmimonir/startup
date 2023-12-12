@@ -3,7 +3,7 @@
 /*
 Template Name: Template Quote
 */
-get_template_part('template-parts/header');
+get_template_part('demo-data/header');
 ?>
 
 <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
@@ -17,8 +17,8 @@ get_template_part('template-parts/header');
     </div>
 </div>
 
-<?php get_template_part('demo_data/template-parts/quote'); ?>
+<?php get_template_part('demo-data/template/quote'); ?>
 
 <?php
-get_template_part('template-parts/footer');
+get_template_part('demo-data/footer');
 ?>

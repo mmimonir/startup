@@ -87,5 +87,11 @@
     <?php get_footer(); ?>
 <?php
 } else {
-    get_template_part('demo-data/index');
+    $requested_page = get_queried_object()->post_name;
+    // echo $requested_page;
+    if ($requested_page == 'blog') {
+        get_template_part('demo-data/template-blog');
+    } else {
+        get_template_part('demo-data/index');
+    }
 }
